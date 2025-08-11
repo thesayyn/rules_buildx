@@ -1,0 +1,24 @@
+# Override http_archive for local testing
+local_repository(
+    name = "rules_buildx",
+    path = "../..",
+)
+
+#---SNIP--- Below here is re-used in the workspace snippet published on releases
+
+######################
+# rules_buildx setup #
+######################
+# Fetches the rules_buildx dependencies.
+# If you want to have a different version of some dependency,
+# you should fetch it *before* calling this.
+# Alternatively, you can skip calling this function, so long as you've
+# already fetched all the dependencies.
+
+load("@rules_buildx//buildx:dependencies.bzl", "rules_buildx_dependencies")
+
+rules_buildx_dependencies()
+
+load("@rules_buildx//buildx:repositories.bzl", "buildx_register_toolchains")
+
+buildx_register_toolchains()

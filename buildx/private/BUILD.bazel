@@ -1,0 +1,35 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
+bzl_library(
+    name = "toolchains_repo",
+    srcs = ["toolchains_repo.bzl"],
+    visibility = ["//buildx:__subpackages__"],
+)
+
+bzl_library(
+    name = "versions",
+    srcs = ["versions.bzl"],
+    visibility = ["//buildx:__subpackages__"],
+)
+
+bzl_library(
+    name = "resolved_toolchain",
+    srcs = ["resolved_toolchain.bzl"],
+    visibility = ["//buildx:__subpackages__"],
+)
+
+bzl_library(
+    name = "buildx_build",
+    srcs = ["buildx_build.bzl"],
+    visibility = ["//buildx:__subpackages__"],
+    deps = [
+        "@aspect_bazel_lib//lib:copy_file",
+        "@aspect_bazel_lib//lib:run_binary",
+    ],
+)
+
+bzl_library(
+    name = "buildx_context",
+    srcs = ["buildx_context.bzl"],
+    visibility = ["//buildx:__subpackages__"],
+)
